@@ -22,7 +22,7 @@ import controlP5.*;
   }
  
   void captureEvent(Capture video) {
-    prevFrame.copy(video, 0, 0, video.width, video.height, 0, 0, video.width, video.height); // Before we read the new frame, we always save the previous frame for comparison!
+    prevFrame.copy(video, 0, 0, video.width, video.height, 0, 0, video.width, video.height);
     prevFrame.updatePixels(); 
     video.read();
   }
@@ -58,10 +58,7 @@ import controlP5.*;
     
     pixels[loc] = color(125,0,125);
     LG = true;
-  } else {
-    
-    //pixels[loc] = color(255);
-  }
+  } 
 }
 }
     
