@@ -3,7 +3,7 @@ import controlP5.*;
   Capture video;
   ControlP5 cp5;
   PImage prevFrame;
-  float threshold = 50;
+  float threshold = 80;
   boolean toggleValue;
 
   void setup() {
