@@ -1,13 +1,24 @@
 import processing.video.*;
+import controlP5.*;
   Capture video;
+  ControlP5 cp5;
   PImage prevFrame;
   float threshold = 50;
+  boolean toggleValue;
 
   void setup() {
     size(640, 480);
     video = new Capture(this, width, height, 30);
     video.start();
     prevFrame = createImage(video.width, video.height, RGB);
+    
+    cp5 = new ControlP5(this);
+  
+  cp5.addToggle("toggleValue").setPosition(20,25).setSize(70,30)
+  .setCaptionLabel("Wykrywaj ruch")
+  .setColorBackground(color(255,0,0))
+  .setColorForeground(color(0,0,255))
+  .setColorActive(color(0,255,0));
   }
  
   void captureEvent(Capture video) {
@@ -17,6 +28,7 @@ import processing.video.*;
   }
  
   void draw() {
+    if(toggleValue==true){
     boolean LG = false;
     boolean PG = false;
     boolean LD = false;
@@ -27,8 +39,8 @@ import processing.video.*;
     prevFrame.loadPixels();
    
  
-    for (int x = 0; x < 320; x ++ ) {
-      for (int y = 0; y < 240; y ++ ) {
+    for (int x = 0; x < 250; x ++ ) {
+      for (int y = 0; y < 150; y ++ ) {
  
   int loc = x + y*video.width;           
   color current = video.pixels[loc];      
@@ -53,8 +65,8 @@ import processing.video.*;
 }
 }
     
-    for (int x = 320; x < 640; x ++ ) {
-      for (int y = 0; y < 240; y ++ ) {
+    for (int x = 390; x < 640; x ++ ) {
+      for (int y = 0; y < 150; y ++ ) {
  
   int loc = x + y*video.width;            
   color current = video.pixels[loc];      
@@ -77,8 +89,8 @@ import processing.video.*;
  }
 }
   
-  for (int x = 0; x < 320; x ++ ) {
-      for (int y = 240; y < 480; y ++ ) {
+  for (int x = 0; x < 250; x ++ ) {
+      for (int y = 330; y < 480; y ++ ) {
  
   int loc = x + y*video.width;            
   color current = video.pixels[loc];      
@@ -101,8 +113,8 @@ import processing.video.*;
   }
   }
   
-  for (int x = 320; x < 640; x ++ ) {
-      for (int y = 240; y < 480; y ++ ) {
+  for (int x = 390; x < 640; x ++ ) {
+      for (int y = 330; y < 480; y ++ ) {
  
   int loc = x + y*video.width;            
   color current = video.pixels[loc];      
@@ -130,22 +142,29 @@ import processing.video.*;
     
     if(LG==true){
       fill(255,225,0);
-      textSize(14);
-      text("Ruch w lewym górnym rogu.",20,20);
+      textSize(16);
+      text("Ruch w lewym górnym rogu.",10,20);
     }
     if(PG==true){
       fill(255,225,0);
-      textSize(14);
-      text("Ruch w prawym górnym rogu.",420,20);
+      textSize(16);
+      text("Ruch w prawym górnym rogu.",400,20);
     }
     if(LD==true){
       fill(255,225,0);
-      textSize(14);
-      text("Ruch w lewym dolnym rogu.",20,450);
+      textSize(16);
+      text("Ruch w lewym dolnym rogu.",10,450);
     }
     if(PD==true){
       fill(255,225,0);
-      textSize(14);
-      text("Ruch w prawym dolnym rogu.",420,450);
+      textSize(16);
+      text("Ruch w prawym dolnym rogu.",400,450);
     }
+  }
+  else{
+  background(0);
+  fill(255);
+  textSize(15);
+  text("Kliknij na czerwony prostokąt, aby rozpocząć wykrywanie ruchu.",125,50);
+  }
   }
