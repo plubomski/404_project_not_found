@@ -28,11 +28,11 @@ import controlP5.*;
   }
  
   void draw() {
-    if(toggleValue==true){
-    boolean LG = false;
-    boolean PG = false;
-    boolean LD = false;
-    boolean PD = false;
+    if(toggleValue==true){ //to je od interfejsu, else do tego jest na samym dole i przy else program jest nieaktywny, taka ekstrawagancja
+    boolean LG    = false;
+    boolean PG    = false;
+    boolean LD    = false;
+    boolean PD    = false;
     image(video, 0, 0);
     loadPixels();
     video.loadPixels();
@@ -40,7 +40,7 @@ import controlP5.*;
    
  
     for (int x = 0; x < 250; x ++ ) {
-      for (int y = 0; y < 150; y ++ ) {
+      for (int y = 0; y < 150; y ++ ) {  //warunek dla lewego górnego rogu i reszta analogicznie, pewnie da sie prosciej zeby nie powtarzac tyle kodu 4 razy
  
   int loc = x + y*video.width;           
   color current = video.pixels[loc];      
