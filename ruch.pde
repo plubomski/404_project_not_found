@@ -37,8 +37,8 @@ void draw() {
   prevFrame.loadPixels();
 
   float totalMotion = 0;
-
-  for (int i = 0; i < video.pixels.length; i ++ ) {
+for (int a = 0; a < 240; a++){
+  for (int i = 1+a*640; i < 320+a*640; i ++ ) {
    
     color current = video.pixels[i];
     color previous = prevFrame.pixels[i];
@@ -54,7 +54,7 @@ void draw() {
     
     totalMotion += diff;
   }
-
+}
   float avgMotion = totalMotion / video.pixels.length; 
 
   if(avgMotion > 5){
