@@ -66,6 +66,7 @@ void draw() {
 }
 else{
   background(0);
-  text("Kliknij na czerwony prostokąt, aby rozpocząć wykrywanie ruchu.",125,50);
+  textSize(18);
+  text("Kliknij na czerwony prostokąt, aby rozpocząć wykrywanie ruchu.",125,20, 400, 100);
 }
 }
